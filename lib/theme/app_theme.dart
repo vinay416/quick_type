@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quick_takes/global/app_colors.dart';
 
 class AppTheme {
-  final secondaryColor = const Color(0xFFF76967);
+  final secondaryColor = AppColors.secondary;
 
   ThemeData get lightTheme {
     final theme = ThemeData(

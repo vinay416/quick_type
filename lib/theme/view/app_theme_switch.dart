@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_takes/global/asset_images.dart';
 import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
 
 class AppThemeSwitch extends StatelessWidget {
@@ -17,6 +18,11 @@ class AppThemeSwitch extends StatelessWidget {
             final theme = value ? ThemeMode.dark : ThemeMode.light;
             viewModel.changeTheme(theme);
           },
+          trackColor: MaterialStatePropertyAll(
+            isDarkMode ? Colors.white : null,
+          ),
+          inactiveThumbImage: const AssetImage(AssetImages.kSun),
+          activeThumbImage: const AssetImage(AssetImages.kMoon),
         );
       },
     );
