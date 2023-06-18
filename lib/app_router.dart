@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:quick_takes/auth/view/auth_watcher.dart';
+import 'package:quick_takes/auth/view/auth_view.dart';
 
 class AppRouter {
   AppRouter._();
@@ -12,7 +12,7 @@ class AppRouter {
   static final List<RouteBase> _routes = [
     GoRoute(
       path: "/",
-      builder: (_, state) => const AuthWatcher(),
+      builder: (_, state) => const AuthView(),
     ),
   ];
 }
