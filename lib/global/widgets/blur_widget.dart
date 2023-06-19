@@ -1,13 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:quick_takes/global/app_colors.dart';
 
 class BlurWidget extends StatelessWidget {
   const BlurWidget({
     required this.height,
     required this.width,
     required this.child,
+    this.contentPadding,
     this.borderRadius,
     this.gradients,
     super.key,
@@ -16,6 +16,7 @@ class BlurWidget extends StatelessWidget {
   final double width;
   final BorderRadius? borderRadius;
   final List<Color>? gradients;
+  final EdgeInsets? contentPadding;
   final Widget child;
 
   @override
@@ -55,7 +56,10 @@ class BlurWidget extends StatelessWidget {
               child: Container(),
             ),
           ),
-          child,
+          Padding(
+            padding: contentPadding ?? const EdgeInsets.all(8.0),
+            child: child,
+          ),
         ],
       ),
     );
