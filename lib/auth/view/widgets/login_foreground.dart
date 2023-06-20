@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_takes/auth/utils/auth_texts.dart';
+import 'package:quick_takes/auth/view/widgets/login_button.dart';
 import 'package:quick_takes/auth/view/widgets/login_desc_card.dart';
 import 'package:quick_takes/global/app_textstyles.dart';
 
@@ -18,7 +19,9 @@ class LoginForeground extends StatelessWidget {
         children: [
           loginTitle,
           const SizedBox(height: 80),
-          loginCardDesign,
+          const LoginDescCard(),
+          const SizedBox(height: 100),
+          const LoginButton(),
         ],
       ),
     );
@@ -29,9 +32,5 @@ class LoginForeground extends StatelessWidget {
       AuthTexts.loginTitle,
       style: AppTextStyles.titleLarge,
     );
-  }
-
-  Widget get loginCardDesign {
-    return const LoginDescCard();
   }
 }

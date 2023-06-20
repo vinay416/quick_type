@@ -17,6 +17,7 @@ class AppTheme {
   ThemeData get darkTheme {
     final theme = ThemeData(
       colorScheme: ColorScheme.dark(
+        primary: secondaryColor,
         secondary: secondaryColor,
       ),
     );

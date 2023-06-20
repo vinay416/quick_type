@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_takes/auth/model/user_model.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({required this.user, super.key});
-  final UserModel user;
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

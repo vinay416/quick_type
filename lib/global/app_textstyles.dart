@@ -12,4 +12,9 @@ class AppTextStyles {
         fontSize: 30,
         fontWeight: FontWeight.w400,
       );
+
+  static TextStyle get button => const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      );
 }

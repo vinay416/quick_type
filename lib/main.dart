@@ -33,12 +33,12 @@ class MainApp extends StatelessWidget {
         builder: (context, viewModel, _) {
           final themeMode = viewModel.themeMode;
           return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            routerConfig: AppRouter.instance.config,
-            theme: viewModel.lightTheme,
-            darkTheme: viewModel.darkTheme,
-            themeMode: themeMode,
-          );
+              debugShowCheckedModeBanner: false,
+              routerConfig: AppRouter.instance.config,
+              theme: viewModel.lightTheme,
+              darkTheme: viewModel.darkTheme,
+              themeMode: ThemeMode.dark //themeMode,
+              );
         },
       ),
     );
