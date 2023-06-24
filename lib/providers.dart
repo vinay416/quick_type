@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_takes/auth/view_model/auth_view_model.dart';
+import 'package:quick_takes/home/view_model/takes_view_model.dart';
 import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
 
 class Providers extends StatelessWidget {
@@ -13,6 +14,7 @@ class Providers extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AppThemeViewModel()),
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => TakesViewModel()),
       ],
       child: child,
     );

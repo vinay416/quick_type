@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:quick_takes/global/app_colors.dart';
+import 'package:quick_takes/app_global/app_colors.dart';
 
 class CustomLoader extends StatelessWidget {
   const CustomLoader({this.size = 20, super.key});

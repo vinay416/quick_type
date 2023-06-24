@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_takes/auth/view_model/auth_view_model.dart';
-import 'package:quick_takes/global/app_colors.dart';
-import 'package:quick_takes/global/app_textstyles.dart';
-import 'package:quick_takes/global/widgets/custom_loader.dart';
+import 'package:quick_takes/app_global/app_colors.dart';
+import 'package:quick_takes/app_global/app_textstyles.dart';
+import 'package:quick_takes/app_global/widgets/custom_loader.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({super.key});

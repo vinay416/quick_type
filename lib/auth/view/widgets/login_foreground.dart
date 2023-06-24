@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_takes/auth/utils/auth_texts.dart';
 import 'package:quick_takes/auth/view/widgets/login_button.dart';
 import 'package:quick_takes/auth/view/widgets/login_desc_card.dart';
-import 'package:quick_takes/global/app_textstyles.dart';
+import 'package:quick_takes/app_global/app_textstyles.dart';
 
 class LoginForeground extends StatelessWidget {
   const LoginForeground({super.key});

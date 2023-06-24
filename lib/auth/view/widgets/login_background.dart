@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quick_takes/global/app_colors.dart';
-import 'package:quick_takes/global/extension/context_extensions.dart';
+import 'package:quick_takes/app_global/app_colors.dart';
+import 'package:quick_takes/app_global/extension/context_extensions.dart';
 
 class LoginBackground extends StatelessWidget {
   const LoginBackground({super.key});
