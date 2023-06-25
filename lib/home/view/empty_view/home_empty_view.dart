@@ -13,6 +13,7 @@ class HomeEmptyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      physics: const NeverScrollableScrollPhysics(),
       title: 'Takes',
       isSmallAppBar: true,
       body: Column(
@@ -20,12 +21,12 @@ class HomeEmptyView extends StatelessWidget {
         children: [
           Center(
             child: SizedBox(
-              height: context.screenHeight(500),
-              width: context.screenWidth(300),
+              height: context.pixelHeight(550),
+              width: context.pixelWidth(300),
               child: SvgPicture.asset(AssetSVG.kAddNote),
             ),
           ),
-          SizedBox(height: context.screenHeight(15)),
+          SizedBox(height: context.pixelHeight(30)),
           Text(
             'No Takes added yet!',
             style: AppTextStyles.subTitle,

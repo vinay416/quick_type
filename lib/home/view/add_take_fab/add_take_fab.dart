@@ -14,14 +14,19 @@ class AddTakeFAB extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Positioned(
-          bottom: context.screenHeight(80),
-          right: context.screenCenter / 2.4,
-          child: const Text('Tap here to add your first Take.'),
+          bottom: context.pixelHeight(80),
+          right: context.screenWidth * -0.04,
+          child: SizedBox(
+            width: context.screenWidth,
+            child: const Center(
+              child: Text('Tap here to add your first Take.'),
+            ),
+          ),
         ),
         Positioned(
-          right: context.screenWidth(65),
-          bottom: context.screenHeight(-50),
-          height: context.screenHeight(60),
+          right: context.pixelWidth(65),
+          bottom: context.pixelHeight(-50),
+          height: context.pixelHeight(60),
           child: Transform(
             transform: Matrix4.rotationX(pi),
             child: Image.asset(
