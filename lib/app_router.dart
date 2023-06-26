@@ -13,7 +13,6 @@ class AppRouter {
   final GoRouter _router = GoRouter(
     routes: _routes,
     redirect: (context, state) {
-      return '/home';
       final bool isAuthenticated =
           context.watch<AuthViewModel>().isAuthenticated;
       return isAuthenticated ? '/home' : '/login';

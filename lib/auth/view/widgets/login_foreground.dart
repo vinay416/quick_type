@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/auth/utils/auth_texts.dart';
 import 'package:quick_takes/auth/view/widgets/login_button.dart';
 import 'package:quick_takes/auth/view/widgets/login_desc_card.dart';
@@ -9,20 +10,22 @@ class LoginForeground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 40,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          loginTitle,
-          const SizedBox(height: 80),
-          const LoginDescCard(),
-          const SizedBox(height: 100),
-          const LoginButton(),
-        ],
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.pixelWidth(20),
+          vertical: context.pixelHeight(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            loginTitle,
+            SizedBox(height: context.pixelHeight(100)),
+            const LoginDescCard(),
+            SizedBox(height: context.pixelHeight(160)),
+            const LoginButton(),
+          ],
+        ),
       ),
     );
   }
