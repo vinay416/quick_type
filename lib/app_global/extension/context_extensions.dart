@@ -31,7 +31,7 @@ extension CustomContext on BuildContext {
     const iphoneXdHeight = 932.0;
     const androidXdHeight = 860.0;
     const smallXdHeight = 870.0;
-    const largeXdHeight = 738.0;
+    const largeXdHeight = 900.0;
 
     final aspectRatio = MediaQuery.of(this).size.aspectRatio;
 

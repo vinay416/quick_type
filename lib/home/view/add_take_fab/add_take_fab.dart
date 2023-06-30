@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quick_takes/app_global/app_colors.dart';
 import 'package:quick_takes/app_global/asset_images.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/app_global/widgets/custom_fab.dart';
+import 'package:quick_takes/home/view/new_take_view.dart';
 
 class AddTakeFAB extends StatelessWidget {
   const AddTakeFAB({super.key});
@@ -38,7 +40,7 @@ class AddTakeFAB extends StatelessWidget {
           ),
         ),
         CustomFAB(
-          onTap: () {},
+          onTap: () => context.goNamed(NewTakeView.routeName),
         ),
       ],
     );

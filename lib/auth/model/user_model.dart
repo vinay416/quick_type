@@ -16,7 +16,7 @@ class UserModel {
     return UserModel(
       username: user.displayName ?? '',
       dpUrl: user.photoURL ?? '',
-      email: user.email!,
+      email: user.email ?? '',
     );
   }
 
@@ -24,7 +24,7 @@ class UserModel {
     return UserModel(
       username: json['username'] ?? '',
       dpUrl: json['dpUrl'] ?? '',
-      email: json['email'] as String,
+      email: json['email'] ?? '',
     );
   }
 
