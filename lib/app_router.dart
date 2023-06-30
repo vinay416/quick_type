@@ -19,10 +19,10 @@ class AppRouter {
       final bool isAuthenticated =
           context.read<AuthViewModel>().isAuthenticated;
       if (!isAuthenticated) {
-        return LoginView.routePath;
+        return state.namedLocation(LoginView.routeName);
       }
-      if (state.fullPath == LoginView.routePath) {
-        return HomeView.routePath;
+      if (state.fullPath == '/${LoginView.routeName}') {
+        return state.namedLocation(HomeView.routeName);
       }
 
       return state.fullPath;
@@ -40,12 +40,12 @@ class AppRouter {
     ),
     GoRoute(
       name: LoginView.routeName,
-      path: LoginView.routePath,
+      path: '/login',
       builder: (_, state) => const LoginView(),
     ),
     GoRoute(
       name: HomeView.routeName,
-      path: HomeView.routePath,
+      path: '/home',
       builder: (_, state) => const HomeView(),
       routes: [
         GoRoute(

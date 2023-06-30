@@ -6,7 +6,6 @@ class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   static String get routeName =>'login';
-  static String get routePath =>'/login';
 
   @override
   Widget build(BuildContext context) {

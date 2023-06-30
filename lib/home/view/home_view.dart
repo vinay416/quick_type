@@ -8,7 +8,6 @@ class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   static String get routeName => 'home';
-  static String get routePath => '/home';
 
   @override
   Widget build(BuildContext context) {
