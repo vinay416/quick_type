@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,8 +30,10 @@ class AuthViewModel extends ChangeNotifier {
       (user) {
         if (user == null) {
           _isAuthenticated = false;
+          _navigateRoute(LoginView.routeName);
         } else {
           _isAuthenticated = true;
+          _navigateRoute(HomeView.routeName);
         }
         notifyListeners();
       },
@@ -59,19 +60,19 @@ class AuthViewModel extends ChangeNotifier {
       //   _setLoader(false);
       //   return;
       // }
-      final user = await _auth.signInAnonymously();
+      final user = await _auth.signInWithEmailAndPassword(
+          email: 'testUser@gmail.com', password: 'test1234');
       await _createUser(user.user!);
       _setLoader(false);
-      _navigateRoute(HomeView.routeName);
     } catch (e) {
       log('Error on signup - $e');
+      _setLoader(false);
     }
   }
 
   Future<void> logOut() async {
     _googleSignIn.signOut();
     _auth.signOut();
-    _navigateRoute(LoginView.routeName);
   }
 
   void _navigateRoute(String route) {

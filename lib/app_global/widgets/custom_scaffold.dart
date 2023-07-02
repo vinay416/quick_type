@@ -9,6 +9,7 @@ class CustomScaffold extends StatelessWidget {
     this.title,
     this.isSmallAppBar = false,
     this.actions,
+    this.enableLeadingBack = false,
     this.physics,
     this.floatingActionButton,
     super.key,
@@ -19,6 +20,7 @@ class CustomScaffold extends StatelessWidget {
   final List<Widget>? actions;
   final Widget? floatingActionButton;
   final ScrollPhysics? physics;
+  final bool enableLeadingBack;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +30,14 @@ class CustomScaffold extends StatelessWidget {
         slivers: [
           if (title != null)
             SliverAppBar.large(
-              automaticallyImplyLeading: false,
+              automaticallyImplyLeading: enableLeadingBack,
               title: Text(title!),
-              expandedHeight: isSmallAppBar ? context.pixelHeight(100) : null,
+              expandedHeight: isSmallAppBar ? context.pixelHeight(80) : null,
               flexibleSpace: isSmallAppBar
                   ? Padding(
-                      padding: const EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.only(
+                        left: enableLeadingBack ? 50 : 20,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

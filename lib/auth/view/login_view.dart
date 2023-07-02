@@ -5,16 +5,18 @@ import 'package:quick_takes/auth/view/widgets/login_foreground.dart';
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
-  static String get routeName =>'login';
+  static String get routeName => 'login';
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Stack(
-        children: [
-          LoginBackground(),
-          LoginForeground(),
-        ],
+    return const SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            LoginBackground(),
+            LoginForeground(),
+          ],
+        ),
       ),
     );
   }

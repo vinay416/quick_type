@@ -9,7 +9,7 @@ class AppTextStyles {
       );
 
   static TextStyle get title => const TextStyle(
-        fontSize: 40,
+        fontSize: 35,
         fontWeight: FontWeight.w500,
       );
 
