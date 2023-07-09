@@ -5,10 +5,12 @@ class UserModel {
     required this.username,
     required this.dpUrl,
     required this.email,
+    required this.createdDate,
   });
   final String username;
   final String dpUrl;
   final String email;
+  final DateTime createdDate;
 
   static String get ref => 'Users';
 
@@ -17,15 +19,16 @@ class UserModel {
       username: user.displayName ?? '',
       dpUrl: user.photoURL ?? '',
       email: user.email ?? '',
+      createdDate: DateTime.now(),
     );
   }
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      username: json['username'] ?? '',
-      dpUrl: json['dpUrl'] ?? '',
-      email: json['email'] ?? '',
-    );
+        username: json['username'] ?? '',
+        dpUrl: json['dpUrl'] ?? '',
+        email: json['email'] ?? '',
+        createdDate: json['createdDate'] ?? '');
   }
 
   Map<String, dynamic> toJson() {
@@ -33,6 +36,7 @@ class UserModel {
       'username': username,
       'dpUrl': dpUrl,
       'email': email,
+      'createdDate': createdDate.millisecondsSinceEpoch,
     };
   }
 }

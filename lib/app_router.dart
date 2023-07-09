@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quick_takes/auth/view/login_view.dart';
 import 'package:quick_takes/auth/view_model/auth_view_model.dart';
 import 'package:quick_takes/home/view/home_view.dart';
-import 'package:quick_takes/home/view/new_take_view.dart';
+import 'package:quick_takes/home/view/new_take/new_take_view.dart';
 
 class AppRouter {
   AppRouter._();

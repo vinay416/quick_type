@@ -16,11 +16,13 @@ class LoginDescCard extends StatelessWidget {
           vertical: 15,
         ),
         borderRadius: BorderRadius.circular(20),
-        height: context.pixelHeight(320),
-        width: context.pixelWidth(300),
-        child: Text(
-          AuthTexts.description,
-          style: AppTextStyles.descprition,
+        height: 0.45.h,
+        width: 0.8.w,
+        child: Center(
+          child: Text(
+            AuthTexts.description,
+            style: AppTextStyles.descprition,
+          ),
         ),
       ),
     );

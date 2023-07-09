@@ -18,7 +18,7 @@ class LoginButton extends StatelessWidget {
           return AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             height: 45,
-            width: context.pixelWidth(300),
+            width: 0.8.w,
             child: OutlinedButton(
               onPressed: () {
                 context.read<AuthViewModel>().signInWithGoogle();

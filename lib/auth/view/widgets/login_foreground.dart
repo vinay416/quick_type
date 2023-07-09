@@ -10,22 +10,18 @@ class LoginForeground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.pixelWidth(20),
-          vertical: context.pixelHeight(20),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            loginTitle,
-            SizedBox(height: context.pixelHeight(100)),
-            const LoginDescCard(),
-            SizedBox(height: context.pixelHeight(160)),
-            const LoginButton(),
-          ],
-        ),
+    return Padding(
+      padding: EdgeInsets.all(0.02.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          loginTitle,
+          const Spacer(),
+          const LoginDescCard(),
+          const Spacer(),
+          const LoginButton(),
+          SizedBox(height: 0.05.h),
+        ],
       ),
     );
   }

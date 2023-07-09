@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_takes/app_global/app_colors.dart';
 
 class AppTextStyles {
   const AppTextStyles._();
@@ -27,5 +28,11 @@ class AppTextStyles {
         fontSize: 18,
         fontWeight: FontWeight.w400,
         color: Colors.grey,
+      );
+
+  static TextStyle get action => const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: AppColors.secondary,
       );
 }

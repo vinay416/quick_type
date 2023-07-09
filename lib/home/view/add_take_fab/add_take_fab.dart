@@ -5,7 +5,7 @@ import 'package:quick_takes/app_global/app_colors.dart';
 import 'package:quick_takes/app_global/asset_images.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/app_global/widgets/custom_fab.dart';
-import 'package:quick_takes/home/view/new_take_view.dart';
+import 'package:quick_takes/home/view/new_take/new_take_view.dart';
 
 class AddTakeFAB extends StatelessWidget {
   const AddTakeFAB({super.key});
@@ -16,8 +16,8 @@ class AddTakeFAB extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Positioned(
-          bottom: context.pixelHeight(80),
-          right: context.screenWidth * -0.04,
+          bottom: 0.1.h,
+          right: -0.05.w,
           child: SizedBox(
             width: context.screenWidth,
             child: const Center(
@@ -26,9 +26,9 @@ class AddTakeFAB extends StatelessWidget {
           ),
         ),
         Positioned(
-          right: context.pixelWidth(65),
-          bottom: context.pixelHeight(-50),
-          height: context.pixelHeight(60),
+          right: 0.16.w,
+          bottom: -0.09.h,
+          height: 0.09.h,
           child: Transform(
             transform: Matrix4.rotationX(pi),
             child: Image.asset(

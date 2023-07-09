@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/app_global/widgets/custom_scaffold.dart';
+import 'package:quick_takes/home/model/take_model.dart';
+import 'package:quick_takes/home/view_model/takes_view_model.dart';
 
 class NewTakeView extends StatefulWidget {
-  const NewTakeView({super.key});
-
+  const NewTakeView({this.take, super.key});
+  final TakeModel? take;
   static String get routeName => 'new';
 
   @override
@@ -25,6 +28,8 @@ class _NewTakeViewState extends State<NewTakeView> {
   @override
   void didChangeDependencies() {
     height = context.screenHeight * 0.88;
+
+    // Todo : add data if take passed
     super.didChangeDependencies();
   }
 
@@ -40,6 +45,12 @@ class _NewTakeViewState extends State<NewTakeView> {
         child: TextField(
           controller: textController,
           scrollController: scrollController,
+          onChanged: (value) {
+            context.read<TakesViewModel>().debounceFunc(
+                  controller: textController,
+                  take: widget.take,
+                );
+          },
           expands: true,
           autofocus: true,
           decoration: const InputDecoration(

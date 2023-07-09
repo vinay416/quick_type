@@ -16,22 +16,23 @@ class HomeEmptyView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       title: 'Takes',
       isSmallAppBar: true,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: SizedBox(
-              height: context.pixelHeight(550),
-              width: context.pixelWidth(300),
-              child: SvgPicture.asset(AssetSVG.kAddNote),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            SizedBox(height: 0.1.h),
+            SvgPicture.asset(
+              AssetSVG.kAddNote,
+              height: 0.42.h,
+              width: 0.8.w,
             ),
-          ),
-          SizedBox(height: context.pixelHeight(30)),
-          Text(
-            'No Takes added yet!',
-            style: AppTextStyles.subTitle,
-          ),
-        ],
+            SizedBox(height: 0.15.h),
+            Text(
+              'No Takes added yet!',
+              style: AppTextStyles.subTitle,
+            ),
+          ],
+        ),
       ),
       floatingActionButton: const AddTakeFAB(),
     );

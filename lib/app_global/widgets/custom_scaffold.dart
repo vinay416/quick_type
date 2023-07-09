@@ -32,7 +32,7 @@ class CustomScaffold extends StatelessWidget {
             SliverAppBar.large(
               automaticallyImplyLeading: enableLeadingBack,
               title: Text(title!),
-              expandedHeight: isSmallAppBar ? context.pixelHeight(80) : null,
+              expandedHeight: isSmallAppBar ? 0.1.h : null,
               flexibleSpace: isSmallAppBar
                   ? Padding(
                       padding: EdgeInsets.only(
@@ -42,11 +42,18 @@ class CustomScaffold extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Spacer(),
-                          Text(
-                            title!,
-                            style: AppTextStyles.title.copyWith(
-                              color: AppColors.primaryLight,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                title!,
+                                style: AppTextStyles.title.copyWith(
+                                  color: AppColors.primaryLight,
+                                ),
+                              ),
+                              const Spacer(),
+                              if (isSmallAppBar && actions != null) ...actions!,
+                              const SizedBox(width: 20),
+                            ],
                           ),
                           const SizedBox(height: 10),
                         ],
