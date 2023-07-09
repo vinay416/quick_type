@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_takes/firebase_options.dart';
-import 'package:quick_takes/providers.dart';
 import 'package:quick_takes/app_router.dart';
+import 'package:quick_takes/providers.dart';
 import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

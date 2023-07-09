@@ -6,6 +6,7 @@ import 'package:quick_takes/app_global/asset_svgs.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/app_global/widgets/custom_scaffold.dart';
 import 'package:quick_takes/home/view/add_take_fab/add_take_fab.dart';
+import 'package:quick_takes/profile/view/widget/profile_button.dart';
 
 class HomeEmptyView extends StatelessWidget {
   const HomeEmptyView({super.key});
@@ -16,6 +17,7 @@ class HomeEmptyView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       title: 'Takes',
       isSmallAppBar: true,
+      actions: const [ProfileButton()],
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(

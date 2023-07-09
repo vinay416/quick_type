@@ -24,7 +24,6 @@ class AppRouter {
       if (state.fullPath == '/${LoginView.routeName}') {
         return state.namedLocation(HomeView.routeName);
       }
-
       return state.fullPath;
     },
   );

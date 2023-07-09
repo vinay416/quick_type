@@ -25,10 +25,11 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-        username: json['username'] ?? '',
-        dpUrl: json['dpUrl'] ?? '',
-        email: json['email'] ?? '',
-        createdDate: json['createdDate'] ?? '');
+      username: json['username'] ?? '',
+      dpUrl: json['dpUrl'] ?? '',
+      email: json['email'] ?? '',
+      createdDate: DateTime.fromMillisecondsSinceEpoch(json['createdDate']),
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -38,5 +39,23 @@ class UserModel {
       'email': email,
       'createdDate': createdDate.millisecondsSinceEpoch,
     };
+  }
+
+  static Map<String, dynamic> updateDpToJson(String dpUrl) {
+    return {
+      'dpUrl': dpUrl,
+    };
+  }
+
+  UserModel copyWith({
+    String? username,
+    String? dpUrl,
+  }) {
+    return UserModel(
+      username: username ?? this.username,
+      dpUrl: dpUrl ?? this.dpUrl,
+      email: email,
+      createdDate: createdDate,
+    );
   }
 }
