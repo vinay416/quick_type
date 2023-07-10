@@ -12,9 +12,15 @@ class LogOutButton extends StatelessWidget {
       onTap: () {
         context.read<AuthViewModel>().logOut();
       },
-      child: Text(
-        'Logout',
-        style: AppTextStyles.action,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Logout',
+          style: AppTextStyles.action.copyWith(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

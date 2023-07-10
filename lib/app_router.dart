@@ -5,6 +5,8 @@ import 'package:quick_takes/auth/view/login_view.dart';
 import 'package:quick_takes/auth/view_model/auth_view_model.dart';
 import 'package:quick_takes/home/view/home_view.dart';
 import 'package:quick_takes/home/view/new_take/new_take_view.dart';
+import 'package:quick_takes/profile/view/profile_view.dart';
+import 'package:quick_takes/profile/view_model/profile_view_model.dart';
 
 class AppRouter {
   AppRouter._();
@@ -51,6 +53,14 @@ class AppRouter {
           name: NewTakeView.routeName,
           path: 'new',
           builder: (_, state) => const NewTakeView(),
+        ),
+        GoRoute(
+          name: ProfileView.routeName,
+          path: 'profile',
+          builder: (context, state) {
+            final user = context.read<ProfileViewModel>().userData;
+            return ProfileView(user: user);
+          },
         ),
       ],
     ),

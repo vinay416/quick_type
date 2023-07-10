@@ -6,6 +6,11 @@ class AppTheme {
 
   ThemeData get lightTheme {
     final theme = ThemeData(
+      appBarTheme: AppBarTheme(
+        foregroundColor: AppColors.primaryDark,
+        backgroundColor: Colors.grey[300],
+      ),
+      scaffoldBackgroundColor: AppColors.primaryLight,
       colorScheme: ColorScheme.light(
         primary: secondaryColor,
         secondary: secondaryColor,
@@ -16,6 +21,7 @@ class AppTheme {
 
   ThemeData get darkTheme {
     final theme = ThemeData(
+      scaffoldBackgroundColor: AppColors.primaryDark,
       colorScheme: ColorScheme.dark(
         primary: secondaryColor,
         secondary: secondaryColor,
