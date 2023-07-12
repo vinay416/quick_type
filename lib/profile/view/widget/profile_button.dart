@@ -14,10 +14,10 @@ class ProfileButton extends StatefulWidget {
 
 class _ProfileButtonState extends State<ProfileButton> {
   @override
-  void didChangeDependencies() {
+  void initState() {
+    super.initState();
     final viewModel = context.read<ProfileViewModel>();
     viewModel.fetchUser();
-    super.didChangeDependencies();
   }
 
   @override

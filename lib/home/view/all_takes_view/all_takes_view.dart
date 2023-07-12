@@ -1,9 +1,7 @@
 import 'package:firebase_ui_database/firebase_ui_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quick_takes/app_global/app_colors.dart';
 import 'package:quick_takes/app_global/app_textstyles.dart';
-import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/app_global/widgets/custom_scaffold.dart';
 import 'package:quick_takes/home/model/take_model.dart';
 import 'package:quick_takes/home/view/add_take_fab/add_take_fab.dart';
