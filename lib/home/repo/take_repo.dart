@@ -7,19 +7,21 @@ import 'package:quick_takes/home/model/take_model.dart';
 abstract interface class TakeRepoInterface {
   Future<bool> saveTake(TakeModel take);
   Future<bool> deleteTake(TakeModel take);
+  Query get fetchTakes;
+  Stream<bool> get isTakeListEmpty;
 }
 
 class TakeRepo implements TakeRepoInterface {
-  final FirebaseDatabase _database = FirebaseDatabase.instanceFor(
+  final DatabaseReference _database = FirebaseDatabase.instanceFor(
     app: Firebase.app(),
     databaseURL: 'https://quick-type-eafa3-default-rtdb.firebaseio.com/',
-  );
+  ).ref(TakeModel.ref);
   final userId = FirebaseAuth.instance.currentUser!.uid;
 
   @override
   Future<bool> saveTake(TakeModel take) async {
     try {
-      final ref = _database.ref(TakeModel.ref).child(userId);
+      final ref = _database.child(userId);
       await ref.child(take.id.toString()).set(take.toMap());
       return true;
     } on Exception catch (e) {
@@ -31,12 +33,26 @@ class TakeRepo implements TakeRepoInterface {
   @override
   Future<bool> deleteTake(TakeModel take) async {
     try {
-      final ref = _database.ref(TakeModel.ref).child(userId);
+      final ref = _database.child(userId);
       await ref.child(take.id.toString()).remove();
       return true;
     } on Exception catch (e) {
       log('error on delete take firebase : $e');
       return false;
     }
+  }
+
+  @override
+  Query get fetchTakes {
+    final query = _database.child(userId).orderByChild('id');
+    return query;
+  }
+
+  @override
+  Stream<bool> get isTakeListEmpty {
+    return _database
+        .child(userId)
+        .onValue
+        .map((event) => event.snapshot.children.isEmpty);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/app_global/widgets/custom_scaffold.dart';
@@ -18,48 +19,71 @@ class _NewTakeViewState extends State<NewTakeView> {
   final scrollController = ScrollController();
   final textController = TextEditingController();
   double height = 100;
+  late TakeModel take;
+  late TakesViewModel viewModel;
 
   @override
   void initState() {
     scrollListener();
+    // textListener();
     super.initState();
   }
 
+  // void textListener() {
+  //   textController.addListener(() {
+  //     context.read<TakesViewModel>().debounceFunc(
+  //           controller: textController,
+  //           oldTake: take,
+  //         );
+  //   });
+  // }
+
   @override
   void didChangeDependencies() {
+    viewModel = context.read<TakesViewModel>();
     height = context.screenHeight * 0.88;
-
-    // Todo : add data if take passed
+    take = widget.take ?? TakeModel.empty();
+    textController.text = take.data;
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-      enableLeadingBack: true,
-      title: 'Add Take',
-      isSmallAppBar: true,
-      body: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        height: height,
-        child: TextField(
-          controller: textController,
-          scrollController: scrollController,
-          onChanged: (value) {
-            context.read<TakesViewModel>().debounceFunc(
-                  controller: textController,
-                  take: widget.take,
-                );
-          },
-          expands: true,
-          autofocus: true,
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.all(10),
-            isDense: false,
+    return WillPopScope(
+      onWillPop: () async {
+        viewModel.onTapBack(take);
+        return true;
+      },
+      child: CustomScaffold(
+        enableLeadingBack: true,
+        title: 'Add Take',
+        isSmallAppBar: true,
+        onTapback: () {
+          viewModel.onTapBack(take);
+          context.pop();
+        },
+        body: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          height: height,
+          child: TextField(
+            controller: textController,
+            scrollController: scrollController,
+            onChanged: (value) {
+              viewModel.debounceFunc(
+                controller: textController,
+                oldTake: take,
+              );
+            },
+            expands: true,
+            autofocus: true,
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.all(10),
+              isDense: false,
+            ),
+            maxLines: null,
+            minLines: null,
           ),
-          maxLines: null,
-          minLines: null,
         ),
       ),
     );
@@ -82,6 +106,7 @@ class _NewTakeViewState extends State<NewTakeView> {
   @override
   void dispose() {
     scrollController.dispose();
+    textController.dispose();
     super.dispose();
   }
 }

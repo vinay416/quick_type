@@ -11,12 +11,22 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<TakesViewModel, bool>(
-      selector: (_, viewModel) => viewModel.takesList.isEmpty,
-      builder: (context, isEmpty, child) {
-        if (isEmpty) {
+    final viewModel = context.read<TakesViewModel>();
+
+    return StreamBuilder<bool>(
+      initialData: false,
+      stream: viewModel.isTakesListEmpty,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        if (snapshot.data ?? true) {
           return const HomeEmptyView();
         }
+
         return const AllTakesView();
       },
     );

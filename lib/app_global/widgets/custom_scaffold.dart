@@ -9,12 +9,13 @@ import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
 class CustomScaffold extends StatelessWidget {
   const CustomScaffold({
     this.body,
-    this.title,
+    required this.title,
     this.isSmallAppBar = false,
     this.actions,
     this.enableLeadingBack = false,
     this.physics,
     this.floatingActionButton,
+    this.onTapback,
     super.key,
   });
   final Widget? body;
@@ -24,6 +25,7 @@ class CustomScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
   final ScrollPhysics? physics;
   final bool enableLeadingBack;
+  final VoidCallback? onTapback;
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +88,10 @@ class CustomScaffold extends StatelessWidget {
     final context = AppRouter.navigatorKey.currentContext!;
     return IconButton(
       onPressed: () {
+        if(onTapback!=null){
+          onTapback!.call();
+          return;
+        }
         Navigator.pop(context);
       },
       icon: const Icon(Icons.arrow_back_ios),

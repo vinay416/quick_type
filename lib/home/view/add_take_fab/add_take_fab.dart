@@ -8,10 +8,17 @@ import 'package:quick_takes/app_global/widgets/custom_fab.dart';
 import 'package:quick_takes/home/view/new_take/new_take_view.dart';
 
 class AddTakeFAB extends StatelessWidget {
-  const AddTakeFAB({super.key});
+  const AddTakeFAB({this.isTakeListEmpty = true, super.key});
+  final bool isTakeListEmpty;
 
   @override
   Widget build(BuildContext context) {
+    if (!isTakeListEmpty) {
+      return CustomFAB(
+        onTap: () => context.goNamed(NewTakeView.routeName),
+      );
+    }
+
     return Stack(
       clipBehavior: Clip.none,
       children: [

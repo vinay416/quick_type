@@ -1,12 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:firebase_database/firebase_database.dart';
+
 class TakeModel {
-  const TakeModel({
+  TakeModel({
     required this.id,
     required this.data,
     required this.title,
     required this.createdDate,
   });
   final int id;
-  final String data;
+  String data;
   final String title;
   final DateTime createdDate;
 
@@ -14,13 +17,15 @@ class TakeModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'data': data,
       'title': title,
       'createdDate': createdDate.millisecondsSinceEpoch,
     };
   }
 
-  factory TakeModel.fromMap(Map<String, dynamic> map) {
+  factory TakeModel.fromDocument(DataSnapshot snapshot) {
+    final map = Map<String, dynamic>.from(snapshot.value as Map);
     return TakeModel(
       id: map['id'] as int,
       data: map['data'] as String,
@@ -31,11 +36,11 @@ class TakeModel {
     );
   }
 
-  factory TakeModel.add({required String data}) {
+  factory TakeModel.empty() {
     return TakeModel(
       id: -DateTime.now().millisecondsSinceEpoch,
-      data: data,
-      title: _getTitle(data),
+      data: '',
+      title: _getTitle(''),
       createdDate: DateTime.now(),
     );
   }
@@ -48,5 +53,20 @@ class TakeModel {
     }
 
     return data;
+  }
+
+  void setLocalData(String data){
+    this.data = data;
+  }
+
+  TakeModel copyWith({
+    String? data,
+  }) {
+    return TakeModel(
+      id: id,
+      data: data ?? this.data,
+      title: _getTitle(data ?? this.data),
+      createdDate: DateTime.now(),
+    );
   }
 }
