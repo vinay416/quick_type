@@ -8,7 +8,7 @@ abstract interface class TakeRepoInterface {
   Future<bool> saveTake(TakeModel take);
   Future<bool> deleteTake(TakeModel take);
   Query get fetchTakes;
-  Stream<bool> get isTakeListEmpty;
+  Stream<int> get takeCount;
 }
 
 class TakeRepo implements TakeRepoInterface {
@@ -49,10 +49,10 @@ class TakeRepo implements TakeRepoInterface {
   }
 
   @override
-  Stream<bool> get isTakeListEmpty {
+  Stream<int> get takeCount {
     return _database
         .child(userId)
         .onValue
-        .map((event) => event.snapshot.children.isEmpty);
+        .map((event) => event.snapshot.children.length);
   }
 }

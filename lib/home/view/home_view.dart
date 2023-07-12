@@ -13,21 +13,21 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<TakesViewModel>();
 
-    return StreamBuilder<bool>(
-      initialData: false,
-      stream: viewModel.isTakesListEmpty,
+    return StreamBuilder<int>(
+      initialData: 0,
+      stream: viewModel.takesCountStream,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-
-        if (snapshot.data ?? true) {
+        final takesCount = (snapshot.data ?? 0);
+        if (takesCount == 0) {
           return const HomeEmptyView();
         }
 
-        return const AllTakesView();
+        return AllTakesView(takesCount: takesCount);
       },
     );
   }

@@ -9,13 +9,14 @@ import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
 class CustomScaffold extends StatelessWidget {
   const CustomScaffold({
     this.body,
-    required this.title,
+    this.title = 'Title',
     this.isSmallAppBar = false,
     this.actions,
     this.enableLeadingBack = false,
     this.physics,
     this.floatingActionButton,
     this.onTapback,
+    this.expandedTitle,
     super.key,
   });
   final Widget? body;
@@ -26,6 +27,7 @@ class CustomScaffold extends StatelessWidget {
   final ScrollPhysics? physics;
   final bool enableLeadingBack;
   final VoidCallback? onTapback;
+  final Widget? expandedTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -33,35 +35,34 @@ class CustomScaffold extends StatelessWidget {
       body: CustomScrollView(
         physics: physics,
         slivers: [
-          if (title != null)
-            SliverAppBar.large(
-              leading: enableLeadingBack ? backButton : null,
-              title: getTitle,
-              expandedHeight: isSmallAppBar ? 0.1.h : null,
-              flexibleSpace: isSmallAppBar
-                  ? Padding(
-                      padding: EdgeInsets.only(
-                        left: enableLeadingBack ? 50 : 20,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Spacer(),
-                          Row(
-                            children: [
-                              getTitle,
-                              const Spacer(),
-                              if (isSmallAppBar && actions != null) ...actions!,
-                              const SizedBox(width: 20),
-                            ],
-                          ),
-                          const SizedBox(height: 10),
-                        ],
-                      ),
-                    )
-                  : null,
-              actions: actions,
-            ),
+          SliverAppBar.large(
+            leading: enableLeadingBack ? backButton : null,
+            title: expandedTitle ?? getTitle,
+            expandedHeight: isSmallAppBar ? 0.07.h : null,
+            flexibleSpace: isSmallAppBar
+                ? Padding(
+                    padding: EdgeInsets.only(
+                      left: enableLeadingBack ? 50 : 20,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        Row(
+                          children: [
+                            getTitle,
+                            const Spacer(),
+                            if (isSmallAppBar && actions != null) ...actions!,
+                            const SizedBox(width: 20),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                      ],
+                    ),
+                  )
+                : null,
+            actions: actions,
+          ),
           SliverToBoxAdapter(child: body),
         ],
       ),
@@ -75,20 +76,24 @@ class CustomScaffold extends StatelessWidget {
         return Text(
           title!,
           style: AppTextStyles.title.copyWith(
-            color: context.isDarkMode
-                ? AppColors.primaryLight.withOpacity(0.9)
-                : AppColors.primaryDark.withOpacity(0.6),
+            color: getTitleColor(context),
           ),
         );
       },
     );
   }
 
+  static Color getTitleColor(BuildContext context){
+    return context.isDarkMode
+                ? AppColors.primaryLight.withOpacity(0.9)
+                : AppColors.primaryDark.withOpacity(0.6);
+  }
+
   Widget get backButton {
     final context = AppRouter.navigatorKey.currentContext!;
     return IconButton(
       onPressed: () {
-        if(onTapback!=null){
+        if (onTapback != null) {
           onTapback!.call();
           return;
         }

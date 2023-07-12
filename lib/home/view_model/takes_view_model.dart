@@ -30,7 +30,7 @@ class TakesViewModel extends ChangeNotifier {
 
   Query get fetchTakes => _repo.fetchTakes;
 
-  Stream<bool> get isTakesListEmpty => _repo.isTakeListEmpty;
+  Stream<int> get takesCountStream => _repo.takeCount;
 
   void onTapBack(TakeModel take) {
     if (take.data.trim().isNotEmpty) return;
