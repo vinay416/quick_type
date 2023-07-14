@@ -26,7 +26,10 @@ class AllTakesView extends StatelessWidget {
         itemBuilder: (context, snapshot) {
           final take = TakeModel.fromDocument(snapshot);
           return ListTile(
-            title: Text(take.data),
+            title: Card(
+              child: Text(take.data),
+              color: Colors.amber,
+            ),
           );
         },
       ),

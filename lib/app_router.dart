@@ -50,9 +50,9 @@ class AppRouter {
       builder: (_, state) => const HomeView(),
       routes: [
         GoRoute(
-          name: NewTakeView.routeName,
-          path: 'new',
-          builder: (_, state) => const NewTakeView(),
+          name: TakeView.routeName,
+          path: 'take',
+          builder: (_, state) => const TakeView(),
         ),
         GoRoute(
           name: ProfileView.routeName,

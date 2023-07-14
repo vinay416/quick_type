@@ -6,16 +6,16 @@ import 'package:quick_takes/app_global/widgets/custom_scaffold.dart';
 import 'package:quick_takes/home/model/take_model.dart';
 import 'package:quick_takes/home/view_model/takes_view_model.dart';
 
-class NewTakeView extends StatefulWidget {
-  const NewTakeView({this.take, super.key});
+class TakeView extends StatefulWidget {
+  const TakeView({this.take, super.key});
   final TakeModel? take;
-  static String get routeName => 'new';
+  static String get routeName => 'take';
 
   @override
-  State<NewTakeView> createState() => _NewTakeViewState();
+  State<TakeView> createState() => _TakeViewState();
 }
 
-class _NewTakeViewState extends State<NewTakeView> {
+class _TakeViewState extends State<TakeView> {
   final scrollController = ScrollController();
   final textController = TextEditingController();
   double height = 100;
@@ -25,18 +25,8 @@ class _NewTakeViewState extends State<NewTakeView> {
   @override
   void initState() {
     scrollListener();
-    // textListener();
     super.initState();
   }
-
-  // void textListener() {
-  //   textController.addListener(() {
-  //     context.read<TakesViewModel>().debounceFunc(
-  //           controller: textController,
-  //           oldTake: take,
-  //         );
-  //   });
-  // }
 
   @override
   void didChangeDependencies() {

@@ -15,7 +15,7 @@ class AddTakeFAB extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!isTakeListEmpty) {
       return CustomFAB(
-        onTap: () => context.goNamed(NewTakeView.routeName),
+        onTap: () => context.goNamed(TakeView.routeName),
       );
     }
 
@@ -47,7 +47,7 @@ class AddTakeFAB extends StatelessWidget {
           ),
         ),
         CustomFAB(
-          onTap: () => context.goNamed(NewTakeView.routeName),
+          onTap: () => context.goNamed(TakeView.routeName),
         ),
       ],
     );
