@@ -5,6 +5,7 @@ import 'package:quick_takes/app_global/app_textstyles.dart';
 import 'package:quick_takes/app_global/widgets/custom_scaffold.dart';
 import 'package:quick_takes/home/model/take_model.dart';
 import 'package:quick_takes/home/view/add_take_fab/add_take_fab.dart';
+import 'package:quick_takes/home/view/all_takes_view/take_item.dart';
 import 'package:quick_takes/home/view_model/takes_view_model.dart';
 import 'package:quick_takes/profile/view/widget/profile_button.dart';
 import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
@@ -19,19 +20,19 @@ class AllTakesView extends StatelessWidget {
     return CustomScaffold(
       expandedTitle: getExpandedTitle,
       actions: const [ProfileButton()],
-      body: FirebaseDatabaseListView(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        query: viewModel.fetchTakes,
-        itemBuilder: (context, snapshot) {
-          final take = TakeModel.fromDocument(snapshot);
-          return ListTile(
-            title: Card(
-              child: Text(take.data),
-              color: Colors.amber,
-            ),
-          );
-        },
+      body: Column(
+        children: [
+          FirebaseDatabaseListView(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            query: viewModel.fetchTakes,
+            itemBuilder: (context, snapshot) {
+              final take = TakeModel.fromDocument(snapshot);
+              return TakeItem(take: take);
+            },
+          ),
+          const SizedBox(height: 80),
+        ],
       ),
       floatingActionButton: const AddTakeFAB(
         isTakeListEmpty: false,

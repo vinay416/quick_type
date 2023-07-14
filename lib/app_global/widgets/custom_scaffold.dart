@@ -33,7 +33,7 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        physics: physics,
+        physics: physics ?? const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar.large(
             leading: enableLeadingBack ? backButton : null,
@@ -83,10 +83,10 @@ class CustomScaffold extends StatelessWidget {
     );
   }
 
-  static Color getTitleColor(BuildContext context){
+  static Color getTitleColor(BuildContext context) {
     return context.isDarkMode
-                ? AppColors.primaryLight.withOpacity(0.9)
-                : AppColors.primaryDark.withOpacity(0.6);
+        ? AppColors.primaryLight.withOpacity(0.9)
+        : AppColors.primaryDark.withOpacity(0.6);
   }
 
   Widget get backButton {

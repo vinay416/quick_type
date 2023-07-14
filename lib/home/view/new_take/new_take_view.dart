@@ -25,15 +25,20 @@ class _TakeViewState extends State<TakeView> {
   @override
   void initState() {
     scrollListener();
+    initilize();
     super.initState();
+  }
+
+  void initilize() {
+    viewModel = context.read<TakesViewModel>();
+    take = widget.take ?? TakeModel.empty();
+    textController.text = take.data;
+    viewModel.createTake(take);
   }
 
   @override
   void didChangeDependencies() {
-    viewModel = context.read<TakesViewModel>();
     height = context.screenHeight * 0.88;
-    take = widget.take ?? TakeModel.empty();
-    textController.text = take.data;
     super.didChangeDependencies();
   }
 

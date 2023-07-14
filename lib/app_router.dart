@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_takes/auth/view/login_view.dart';
 import 'package:quick_takes/auth/view_model/auth_view_model.dart';
+import 'package:quick_takes/home/model/take_model.dart';
 import 'package:quick_takes/home/view/home_view.dart';
 import 'package:quick_takes/home/view/new_take/new_take_view.dart';
 import 'package:quick_takes/profile/view/profile_view.dart';
@@ -52,7 +53,9 @@ class AppRouter {
         GoRoute(
           name: TakeView.routeName,
           path: 'take',
-          builder: (_, state) => const TakeView(),
+          builder: (_, state) => TakeView(
+            take: state.extra as TakeModel?,
+          ),
         ),
         GoRoute(
           name: ProfileView.routeName,

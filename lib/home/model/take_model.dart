@@ -47,15 +47,29 @@ class TakeModel {
 
   static String _getTitle(String data) {
     if (data.isEmpty) return data;
-
     if (data.length > 20) {
       return data.substring(0, 20);
     }
-
     return data;
   }
 
-  void setLocalData(String data){
+  String get formatSubTitle {
+    if (data.isEmpty) return data;
+    if (data.length > 40) {
+      return data.substring(0, 40);
+    }
+    return data;
+  }
+
+  String get formatTitle {
+    if (data.isEmpty) return data;
+    if (data.length > 20) {
+      return data.substring(0, 20).replaceAll('\n', "");
+    }
+    return data.replaceAll('\n', "");
+  }
+
+  void setLocalData(String data) {
     this.data = data;
   }
 

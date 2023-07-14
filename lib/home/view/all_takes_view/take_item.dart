@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
+import 'package:quick_takes/app_global/app_colors.dart';
+import 'package:quick_takes/app_global/app_textstyles.dart';
+import 'package:quick_takes/app_global/extension/context_extensions.dart';
+import 'package:quick_takes/home/model/take_model.dart';
+import 'package:quick_takes/home/view/new_take/new_take_view.dart';
+
+class TakeItem extends StatelessWidget {
+  const TakeItem({required this.take, super.key});
+  final TakeModel take;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        context.goNamed(TakeView.routeName, extra: take);
+      },
+      child: Card(
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        color: context.isDarkMode
+            ? AppColors.primaryLight.withOpacity(0.15)
+            : AppColors.primaryDark.withOpacity(0.2),
+        child: SizedBox(
+          height: 80,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 5,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                buildTitle,
+                buildTime,
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget get buildTitle {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          take.formatTitle,
+          style: AppTextStyles.button,
+        ),
+        Text(take.formatSubTitle),
+      ],
+    );
+  }
+
+  Widget get buildTime {
+    String date = DateFormat.yMd('en_US').format(take.createdDate);
+    final diff = DateTime.now().difference(take.createdDate);
+    if (diff.inDays == 0) date = 'Today';
+    final time = DateFormat("h:mm a").format(take.createdDate);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [Text(time), Text(date)],
+    );
+  }
+}

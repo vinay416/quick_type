@@ -8,6 +8,8 @@ class TakesViewModel extends ChangeNotifier {
   final TakeRepo _repo = TakeRepo();
   Timer? _debounce;
 
+  void createTake(TakeModel take) => _repo.saveTake(take);
+
   void debounceFunc({
     required TextEditingController controller,
     required TakeModel oldTake,
@@ -22,7 +24,7 @@ class TakesViewModel extends ChangeNotifier {
     } else {
       oldTake.setLocalData(newTake.data);
       _debounce = Timer(
-        const Duration(seconds: 10),
+        const Duration(seconds: 1),
         () => _repo.saveTake(newTake),
       );
     }
