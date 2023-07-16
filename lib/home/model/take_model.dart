@@ -53,6 +53,11 @@ class TakeModel {
     return data;
   }
 
+  static bool isNotSameDay(DateTime prev, DateTime next) {
+    final diff = prev.difference(next);
+    return (diff.inDays != 0);
+  }
+
   String get formatSubTitle {
     if (data.isEmpty) return data;
     if (data.length > 40) {
