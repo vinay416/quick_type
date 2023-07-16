@@ -44,7 +44,7 @@ class TakeRepo implements TakeRepoInterface {
 
   @override
   Query get fetchTakes {
-    final query = _database.child(userId).orderByChild('id');
+    final query = _database.child(userId).orderByChild('updatedTime');
     return query;
   }
 

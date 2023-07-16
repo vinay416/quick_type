@@ -6,12 +6,12 @@ class TakeModel {
     required this.id,
     required this.data,
     required this.title,
-    required this.createdDate,
+    required this.updatedTime,
   });
   final int id;
   String data;
   final String title;
-  final DateTime createdDate;
+  final DateTime updatedTime;
 
   static String get ref => 'Takes';
 
@@ -20,7 +20,7 @@ class TakeModel {
       'id': id,
       'data': data,
       'title': title,
-      'createdDate': createdDate.millisecondsSinceEpoch,
+      'updatedTime': -updatedTime.millisecondsSinceEpoch,
     };
   }
 
@@ -30,18 +30,18 @@ class TakeModel {
       id: map['id'] as int,
       data: map['data'] as String,
       title: map['title'] as String,
-      createdDate: DateTime.fromMillisecondsSinceEpoch(
-        map['createdDate'] as int,
+      updatedTime: DateTime.fromMillisecondsSinceEpoch(
+        -map['updatedTime'] as int,
       ),
     );
   }
 
   factory TakeModel.empty() {
     return TakeModel(
-      id: -DateTime.now().millisecondsSinceEpoch,
+      id: DateTime.now().millisecondsSinceEpoch,
       data: '',
       title: _getTitle(''),
-      createdDate: DateTime.now(),
+      updatedTime: DateTime.now(),
     );
   }
 
@@ -80,7 +80,7 @@ class TakeModel {
       id: id,
       data: data ?? this.data,
       title: _getTitle(data ?? this.data),
-      createdDate: DateTime.now(),
+      updatedTime: DateTime.now(),
     );
   }
 }

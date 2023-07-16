@@ -61,10 +61,10 @@ class TakeItem extends StatelessWidget {
   }
 
   Widget get buildTime {
-    String date = DateFormat.yMd('en_US').format(take.createdDate);
-    final diff = DateTime.now().difference(take.createdDate);
+    String date = DateFormat.yMd('en_US').format(take.updatedTime);
+    final diff = DateTime.now().difference(take.updatedTime);
     if (diff.inDays == 0) date = 'Today';
-    final time = DateFormat("h:mm a").format(take.createdDate);
+    final time = DateFormat("h:mm a").format(take.updatedTime);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
