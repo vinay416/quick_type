@@ -5,6 +5,7 @@ import 'package:quick_takes/app_global/app_colors.dart';
 import 'package:quick_takes/app_global/app_textstyles.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/home/model/take_model.dart';
+import 'package:quick_takes/home/view/all_takes_view/widgets/take_slidable.dart';
 import 'package:quick_takes/home/view/new_take/new_take_view.dart';
 
 class TakeItem extends StatelessWidget {
@@ -22,32 +23,37 @@ class TakeItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         isbuildDate ? buildDate : const SizedBox.shrink(),
-        Card(
-          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          color: context.isDarkMode
-              ? AppColors.primaryLight.withOpacity(0.15)
-              : AppColors.primaryDark.withOpacity(0.2),
-          child: InkWell(
-            onTap: () {
-              context.goNamed(TakeView.routeName, extra: take);
-            },
-            child: SizedBox(
-              height: 80,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 5,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    buildTitle,
-                    buildTime,
-                  ],
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          child: TakeSlidable(
+            take: take,
+            child: Card(
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: context.isDarkMode
+                  ? AppColors.primaryLight.withOpacity(0.15)
+                  : AppColors.primaryDark.withOpacity(0.2),
+              child: InkWell(
+                onTap: () {
+                  context.goNamed(TakeView.routeName, extra: take);
+                },
+                child: SizedBox(
+                  height: 80,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 5,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        buildTitle,
+                        buildTime,
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),

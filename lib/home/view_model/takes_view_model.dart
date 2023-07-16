@@ -38,4 +38,8 @@ class TakesViewModel extends ChangeNotifier {
     if (take.data.trim().isNotEmpty) return;
     _repo.deleteTake(take);
   }
+
+  void delete(TakeModel take){
+     _repo.deleteTake(take);
+  }
 }

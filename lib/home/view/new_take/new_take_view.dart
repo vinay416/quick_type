@@ -51,7 +51,7 @@ class _TakeViewState extends State<TakeView> {
       },
       child: CustomScaffold(
         enableLeadingBack: true,
-        title: 'Add Take',
+        title: take.title.isEmpty ? 'Add Take' : take.title,
         isSmallAppBar: true,
         onTapback: () {
           viewModel.onTapBack(take);
