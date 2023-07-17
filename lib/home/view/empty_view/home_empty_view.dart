@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quick_takes/app_global/app_textstyles.dart';
@@ -18,25 +19,43 @@ class HomeEmptyView extends StatelessWidget {
       title: 'Takes',
       isSmallAppBar: true,
       actions: const [ProfileButton()],
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            SizedBox(height: 0.1.h),
-            SvgPicture.asset(
-              AssetSVG.kAddNote,
-              height: 0.42.h,
-              width: 0.8.w,
-            ),
-            SizedBox(height: 0.15.h),
-            Text(
-              'No Takes added yet!',
-              style: AppTextStyles.subTitle,
-            ),
-          ],
-        ),
+      body: body,
+      floatingActionButton: kIsWeb ? null : const AddTakeFAB(),
+    );
+  }
+
+  Widget get body {
+    if (kIsWeb) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const AddTakeFAB(),
+          mobileView,
+        ],
+      );
+    }
+    return mobileView;
+  }
+
+  Widget get mobileView {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        children: [
+          SizedBox(height: 0.1.h),
+          SvgPicture.asset(
+            AssetSVG.kAddNote,
+            height: 0.42.h,
+            width: 0.8.w,
+          ),
+          SizedBox(height: 0.15.h),
+          Text(
+            'No Takes added yet!',
+            style: AppTextStyles.subTitle,
+          ),
+        ],
       ),
-      floatingActionButton: const AddTakeFAB(),
     );
   }
 }

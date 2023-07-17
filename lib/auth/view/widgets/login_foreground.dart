@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/auth/utils/auth_texts.dart';
@@ -10,6 +11,8 @@ class LoginForeground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kIsWeb) return webView;
+
     return Padding(
       padding: EdgeInsets.all(0.02.h),
       child: Column(
@@ -23,6 +26,22 @@ class LoginForeground extends StatelessWidget {
           SizedBox(height: 0.05.h),
         ],
       ),
+    );
+  }
+
+  Widget get webView {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        const Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            LoginDescCard(),
+            LoginButton(),
+          ],
+        ),
+        loginTitle,
+      ],
     );
   }
 

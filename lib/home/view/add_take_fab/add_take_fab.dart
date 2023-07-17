@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quick_takes/app_global/app_colors.dart';
@@ -13,6 +14,22 @@ class AddTakeFAB extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kIsWeb) {
+      return SizedBox(
+        height: 50,
+        child: ElevatedButton.icon(
+          onPressed: () => context.goNamed(TakeView.routeName),
+          style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+          icon: const Icon(
+            Icons.add,
+            size: 35,
+            color: AppColors.primaryLight,
+          ),
+          label: const Text('Add New'),
+        ),
+      );
+    }
+
     if (!isTakeListEmpty) {
       return CustomFAB(
         onTap: () => context.goNamed(TakeView.routeName),

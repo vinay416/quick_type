@@ -44,8 +44,7 @@ class AllTakesView extends StatelessWidget {
                   bool isbuildDate = false;
                   if (index == 0) {
                     isbuildDate = true;
-                  }
-                  else {
+                  } else {
                     final current = takeList[index].updatedTime;
                     final prev = takeList[index - 1].updatedTime;
                     isbuildDate = TakeModel.isNotSameDay(prev, current);
