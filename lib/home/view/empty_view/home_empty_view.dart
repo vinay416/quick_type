@@ -25,20 +25,6 @@ class HomeEmptyView extends StatelessWidget {
   }
 
   Widget get body {
-    if (kIsWeb) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const AddTakeFAB(),
-          mobileView,
-        ],
-      );
-    }
-    return mobileView;
-  }
-
-  Widget get mobileView {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(

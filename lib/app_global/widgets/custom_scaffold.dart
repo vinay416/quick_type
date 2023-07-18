@@ -36,6 +36,7 @@ class CustomScaffold extends StatelessWidget {
         physics: physics ?? const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar.large(
+            automaticallyImplyLeading: enableLeadingBack,
             leading: enableLeadingBack ? backButton : null,
             title: expandedTitle ?? getTitle,
             expandedHeight: isSmallAppBar ? 0.07.h : null,

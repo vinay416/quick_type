@@ -7,6 +7,14 @@ import 'package:quick_takes/home/repo/take_repo.dart';
 class TakesViewModel extends ChangeNotifier {
   final TakeRepo _repo = TakeRepo();
   Timer? _debounce;
+  TakeModel? _take;
+
+  TakeModel? get take => _take;
+
+  void setTake(TakeModel? take) {
+    _take = take;
+    notifyListeners();
+  }
 
   void createTake(TakeModel take) => _repo.saveTake(take);
 
@@ -15,7 +23,8 @@ class TakesViewModel extends ChangeNotifier {
     required TakeModel oldTake,
   }) {
     final newTake = oldTake.copyWith(data: controller.text.trim());
-    if (oldTake.data == newTake.data || newTake.data.isEmpty) {
+    if (oldTake.data == newTake.data) {
+      //  oldTake.data == newTake.data || newTake.data.isEmpty
       _debounce?.cancel();
       return;
     }
@@ -34,12 +43,13 @@ class TakesViewModel extends ChangeNotifier {
 
   Stream<int> get takesCountStream => _repo.takeCount;
 
-  void onTapBack(TakeModel take) {
+  void onTapBack(TakeModel? take) {
+    if(take ==null) return;
     if (take.data.trim().isNotEmpty) return;
     _repo.deleteTake(take);
   }
 
-  void delete(TakeModel take){
-     _repo.deleteTake(take);
+  void delete(TakeModel take) {
+    _repo.deleteTake(take);
   }
 }

@@ -62,9 +62,7 @@ class AllTakesView extends StatelessWidget {
           const SizedBox(height: 80),
         ],
       ),
-      floatingActionButton: const AddTakeFAB(
-        isTakeListEmpty: false,
-      ),
+      floatingActionButton: const AddTakeFAB(isTakeListEmpty: false),
     );
   }
 }

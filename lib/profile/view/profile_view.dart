@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_takes/app_global/app_colors.dart';
 import 'package:quick_takes/app_global/app_textstyles.dart';
@@ -18,7 +19,7 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: 'Profile',
-      enableLeadingBack: true,
+      enableLeadingBack: !kIsWeb,
       actions: const [LogOutButton()],
       body: user == null ? errorText : buildProfile,
     );

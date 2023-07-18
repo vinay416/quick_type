@@ -2,11 +2,13 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:quick_takes/app_global/app_colors.dart';
 import 'package:quick_takes/app_global/asset_images.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/app_global/widgets/custom_fab.dart';
 import 'package:quick_takes/home/view/new_take/new_take_view.dart';
+import 'package:quick_takes/home/view_model/takes_view_model.dart';
 
 class AddTakeFAB extends StatelessWidget {
   const AddTakeFAB({this.isTakeListEmpty = true, super.key});
@@ -18,7 +20,9 @@ class AddTakeFAB extends StatelessWidget {
       return SizedBox(
         height: 50,
         child: ElevatedButton.icon(
-          onPressed: () => context.goNamed(TakeView.routeName),
+          onPressed: () {
+            context.read<TakesViewModel>().setTake(null);
+          },
           style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
           icon: const Icon(
             Icons.add,

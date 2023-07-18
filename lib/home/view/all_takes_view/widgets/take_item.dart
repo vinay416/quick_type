@@ -1,12 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:quick_takes/app_global/app_colors.dart';
 import 'package:quick_takes/app_global/app_textstyles.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/home/model/take_model.dart';
 import 'package:quick_takes/home/view/all_takes_view/widgets/take_slidable.dart';
 import 'package:quick_takes/home/view/new_take/new_take_view.dart';
+import 'package:quick_takes/home/view_model/takes_view_model.dart';
 
 class TakeItem extends StatelessWidget {
   const TakeItem({
@@ -37,6 +40,12 @@ class TakeItem extends StatelessWidget {
                   : AppColors.primaryDark.withOpacity(0.2),
               child: InkWell(
                 onTap: () {
+                  if (kIsWeb) {
+                    final viewModel = context.read<TakesViewModel>();
+                    viewModel.onTapBack(viewModel.take);
+                    viewModel.setTake(take);
+                    return;
+                  }
                   context.goNamed(TakeView.routeName, extra: take);
                 },
                 child: SizedBox(

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,7 @@ class _TakeViewState extends State<TakeView> {
     viewModel = context.read<TakesViewModel>();
     take = widget.take ?? TakeModel.empty();
     textController.text = take.data;
+    viewModel.setTake(take);
     viewModel.createTake(take);
   }
 
@@ -50,8 +52,8 @@ class _TakeViewState extends State<TakeView> {
         return true;
       },
       child: CustomScaffold(
-        enableLeadingBack: true,
-        title: take.title.isEmpty ? 'Add Take' : take.title,
+        enableLeadingBack: !kIsWeb,
+        title: take.title.isEmpty ? 'New Take' : take.title,
         isSmallAppBar: true,
         onTapback: () {
           viewModel.onTapBack(take);

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,22 @@ class TakeSlidable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kIsWeb) {
+      return Row(
+        children: [
+          Expanded(child: child),
+          const SizedBox(width: 20),
+          IconButton(
+            onPressed: () => onPressedDelete(context),
+            icon: const Icon(
+              Icons.delete_forever_rounded,
+              color: Colors.red,
+            ),
+          )
+        ],
+      );
+    }
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Slidable(
