@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
@@ -19,7 +18,7 @@ class LoginButton extends StatelessWidget {
           return AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             height: 45,
-            width: kIsWeb ? 0.3.w : 0.8.w,
+            width: context.isLargeDevice ? 0.3.w : 0.8.w,
             child: OutlinedButton(
               onPressed: () {
                 context.read<AuthViewModel>().signInWithGoogle();

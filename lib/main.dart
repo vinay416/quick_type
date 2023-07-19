@@ -6,6 +6,7 @@ import 'package:quick_takes/firebase_options.dart';
 import 'package:quick_takes/app_router.dart';
 import 'package:quick_takes/providers.dart';
 import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -37,6 +38,16 @@ class MainApp extends StatelessWidget {
             theme: viewModel.lightTheme,
             darkTheme: viewModel.darkTheme,
             themeMode: themeMode,
+            builder: (context, child) {
+              return ResponsiveBreakpoints.builder(
+                child: child!,
+                breakpoints: [
+                  const Breakpoint(start: 0, end: 450, name: MOBILE),
+                  const Breakpoint(start: 451, end: 914, name: TABLET),
+                  const Breakpoint(start: 915, end: 1920, name: DESKTOP),
+                ],
+              );
+            },
           );
         },
       ),

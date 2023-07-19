@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/home/model/take_model.dart';
 import 'package:quick_takes/home/view_model/takes_view_model.dart';
 
@@ -16,7 +16,7 @@ class TakeSlidable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
+    if (context.isLargeDevice) {
       return Row(
         children: [
           Expanded(child: child),

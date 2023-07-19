@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_takes/app_router.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 extension CustomContext on BuildContext {
   bool get isDarkMode {
@@ -12,6 +13,14 @@ extension CustomContext on BuildContext {
 
   double get screenHeight {
     return MediaQuery.of(this).size.height;
+  }
+
+  bool get isLargeDevice {
+    final landscape = MediaQuery.of(this).orientation == Orientation.landscape;
+    final isTab = ResponsiveBreakpoints.of(this).equals(TABLET);
+    final bool tabLandscape = landscape && isTab;
+    final isDeskstop = ResponsiveBreakpoints.of(this).largerOrEqualTo(DESKTOP);
+    return tabLandscape || isDeskstop;
   }
 }
 

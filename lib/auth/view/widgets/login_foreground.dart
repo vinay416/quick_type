@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/auth/utils/auth_texts.dart';
@@ -11,7 +10,7 @@ class LoginForeground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) return webView;
+    if (context.isLargeDevice) return largeView;
 
     return Padding(
       padding: EdgeInsets.all(0.02.h),
@@ -29,7 +28,7 @@ class LoginForeground extends StatelessWidget {
     );
   }
 
-  Widget get webView {
+  Widget get largeView {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quick_takes/app_global/app_textstyles.dart';
@@ -20,7 +19,7 @@ class HomeEmptyView extends StatelessWidget {
       isSmallAppBar: true,
       actions: const [ProfileButton()],
       body: body,
-      floatingActionButton: kIsWeb ? null : const AddTakeFAB(),
+      floatingActionButton: context.isLargeDevice ? null : const AddTakeFAB(),
     );
   }
 

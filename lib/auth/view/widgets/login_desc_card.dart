@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_takes/app_global/extension/context_extensions.dart';
 import 'package:quick_takes/auth/utils/auth_texts.dart';
@@ -18,7 +17,7 @@ class LoginDescCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(20),
         height: 0.45.h,
-        width: kIsWeb ? 0.3.w : 0.8.w,
+        width: context.isLargeDevice ? 0.3.w : 0.8.w,
         child: Center(
           child: Text(
             AuthTexts.description,

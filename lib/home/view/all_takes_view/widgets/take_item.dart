@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -40,7 +39,7 @@ class TakeItem extends StatelessWidget {
                   : AppColors.primaryDark.withOpacity(0.2),
               child: InkWell(
                 onTap: () {
-                  if (kIsWeb) {
+                  if (context.isLargeDevice) {
                     final viewModel = context.read<TakesViewModel>();
                     viewModel.onTapBack(viewModel.take);
                     viewModel.setTake(take);
@@ -73,22 +72,31 @@ class TakeItem extends StatelessWidget {
   }
 
   Widget get buildTitle {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          take.formatTitle,
-          style: AppTextStyles.button,
-        ),
-        Text(take.formatSubTitle),
-      ],
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            take.formatTitle,
+            style: AppTextStyles.button,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text(
+            take.formatSubTitle,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 
   Widget get buildTime {
     final time = DateFormat("h:mm a").format(take.updatedTime);
-    return Text(time);
+    return Text(
+      time,
+      overflow: TextOverflow.ellipsis,
+    );
   }
 
   Widget get buildDate {
@@ -104,6 +112,7 @@ class TakeItem extends StatelessWidget {
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
