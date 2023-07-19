@@ -20,7 +20,9 @@ class AddTakeFAB extends StatelessWidget {
         height: 50,
         child: ElevatedButton.icon(
           onPressed: () {
-            context.read<TakesViewModel>().setTake(null);
+            final viewModel = context.read<TakesViewModel>();
+            viewModel.setLargeFabTapped(true);
+            viewModel.setTake(null);
           },
           style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
           icon: const Icon(

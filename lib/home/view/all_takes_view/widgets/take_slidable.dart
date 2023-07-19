@@ -54,6 +54,8 @@ class TakeSlidable extends StatelessWidget {
   }
 
   void onPressedDelete(BuildContext context) {
-    context.read<TakesViewModel>().delete(take);
+    final viewModel = context.read<TakesViewModel>();
+    viewModel.setLargeFabTapped(false);
+    viewModel.delete(take);
   }
 }

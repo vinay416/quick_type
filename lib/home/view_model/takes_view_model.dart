@@ -8,8 +8,12 @@ class TakesViewModel extends ChangeNotifier {
   final TakeRepo _repo = TakeRepo();
   Timer? _debounce;
   TakeModel? _take;
+  bool _isLargeFabTapped= false;
 
   TakeModel? get take => _take;
+  bool get isLargeFabTapped => _isLargeFabTapped;
+
+  void setLargeFabTapped(bool val) => _isLargeFabTapped =val;
 
   void setTake(TakeModel? take) {
     _take = take;

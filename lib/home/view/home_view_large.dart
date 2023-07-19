@@ -7,6 +7,7 @@ import 'package:quick_takes/home/view/all_takes_view/all_takes_view.dart';
 import 'package:quick_takes/home/view/empty_view/home_empty_view.dart';
 import 'package:quick_takes/home/view/new_take/new_take_view.dart';
 import 'package:quick_takes/home/view_model/takes_view_model.dart';
+import 'package:tuple/tuple.dart';
 
 class HomeViewLarge extends StatelessWidget {
   const HomeViewLarge({required this.takesCount, super.key});
@@ -36,9 +37,22 @@ class HomeViewLarge extends StatelessWidget {
   }
 
   Widget get takeWebView {
-    return Selector<TakesViewModel, TakeModel?>(
-      selector: (_, viewModel) => viewModel.take,
-      builder: (context, take, child) {
+    return Selector<TakesViewModel, Tuple2<TakeModel?, bool>>(
+      selector: (_, viewModel) => Tuple2(
+        viewModel.take,
+        viewModel.isLargeFabTapped,
+      ),
+      builder: (context, tuple, child) {
+        final take = tuple.item1;
+        final isLargeFabTapped = tuple.item2;
+
+        if (!isLargeFabTapped) {
+          return Container(
+            color: context.isDarkMode
+                ? AppColors.primaryDark
+                : AppColors.primaryLight,
+          );
+        }
         return TakeView(
           key: ObjectKey(take),
           take: take,
