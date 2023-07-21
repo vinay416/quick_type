@@ -40,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "54615680615-fi29rdo4hfnajvnbks16g3fkji7h2akq.apps.googleusercontent.com",
+              "client_id": "54615680615-8d4aba7qc80euv8ce27qv2sfedi3hka9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.quickTakes"
+                "bundle_id": "com.example.quickTakes.RunnerTests"
               }
             }
           ]
