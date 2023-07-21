@@ -14,7 +14,7 @@ abstract interface class TakeRepoInterface {
 class TakeRepo implements TakeRepoInterface {
   final DatabaseReference _database = FirebaseDatabase.instanceFor(
     app: Firebase.app(),
-    databaseURL: 'https://quick-type-eafa3-default-rtdb.firebaseio.com/',
+    databaseURL: const String.fromEnvironment('REALTIME_DB_URL'),
   ).ref(TakeModel.ref);
   final userId = FirebaseAuth.instance.currentUser!.uid;
 

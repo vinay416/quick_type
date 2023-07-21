@@ -7,19 +7,31 @@
         {
             "name": "quick_takes",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                "secerts-key.json"
+            ]
         },
         {
             "name": "quick_takes (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": [
+                "--dart-define-from-file",
+                "secerts-key.json"
+            ]
         },
         {
             "name": "quick_takes (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": [
+                "--dart-define-from-file",
+                "secerts-key.json"
+            ]
         }
     ]
 }

@@ -10,15 +10,14 @@ import 'package:quick_takes/auth/model/user_model.dart';
 import 'package:quick_takes/auth/view/login_view.dart';
 import 'package:quick_takes/home/view/home_view.dart';
 
-const String _clientId =
-    '54615680615-js178jcbi0gc9oigb7lhi81t7pp8759p.apps.googleusercontent.com';
-
 class AuthViewModel extends ChangeNotifier {
   AuthViewModel() {
     _authStream();
   }
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn(clientId: _clientId);
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    clientId: const String.fromEnvironment("CLIENT_ID"),
+  );
   bool _isLoading = false;
   bool _isAuthenticated = false;
 
