@@ -1,3 +1,4 @@
+import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +54,10 @@ class TakeSlidable extends StatelessWidget {
     );
   }
 
-  void onPressedDelete(BuildContext context) {
+  void onPressedDelete(BuildContext context) async {
+    Size size = await DesktopWindow.getWindowSize();
+    print(size);
+    return;
     final viewModel = context.read<TakesViewModel>();
     viewModel.setLargeFabTapped(false);
     viewModel.delete(take);

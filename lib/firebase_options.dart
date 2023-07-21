@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '54615680615',
     projectId: 'quick-type-eafa3',
     authDomain: 'quick-type-eafa3.firebaseapp.com',
+    databaseURL: 'https://quick-type-eafa3-default-rtdb.firebaseio.com',
     storageBucket: 'quick-type-eafa3.appspot.com',
   );
 
@@ -60,6 +58,7 @@ class DefaultFirebaseOptions {
     appId: '1:54615680615:android:bfed9af90da6b18a1b96c2',
     messagingSenderId: '54615680615',
     projectId: 'quick-type-eafa3',
+    databaseURL: 'https://quick-type-eafa3-default-rtdb.firebaseio.com',
     storageBucket: 'quick-type-eafa3.appspot.com',
   );
 
@@ -68,9 +67,22 @@ class DefaultFirebaseOptions {
     appId: '1:54615680615:ios:33e59eef5b5c8d411b96c2',
     messagingSenderId: '54615680615',
     projectId: 'quick-type-eafa3',
+    databaseURL: 'https://quick-type-eafa3-default-rtdb.firebaseio.com',
     storageBucket: 'quick-type-eafa3.appspot.com',
     androidClientId: '54615680615-vonmv4j6k4qhhdsv9uoaku7filhb3okk.apps.googleusercontent.com',
     iosClientId: '54615680615-fi29rdo4hfnajvnbks16g3fkji7h2akq.apps.googleusercontent.com',
     iosBundleId: 'com.example.quickTakes',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyC9rPk9los597GzLTPu-KJepwlUyzp2D2s',
+    appId: '1:54615680615:ios:735dad22b6edc2801b96c2',
+    messagingSenderId: '54615680615',
+    projectId: 'quick-type-eafa3',
+    databaseURL: 'https://quick-type-eafa3-default-rtdb.firebaseio.com',
+    storageBucket: 'quick-type-eafa3.appspot.com',
+    androidClientId: '54615680615-vonmv4j6k4qhhdsv9uoaku7filhb3okk.apps.googleusercontent.com',
+    iosClientId: '54615680615-8d4aba7qc80euv8ce27qv2sfedi3hka9.apps.googleusercontent.com',
+    iosBundleId: 'com.example.quickTakes.RunnerTests',
   );
 }
