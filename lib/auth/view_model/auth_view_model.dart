@@ -16,9 +16,7 @@ class AuthViewModel extends ChangeNotifier {
     _authStream();
   }
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    clientId: const String.fromEnvironment("CLIENT_ID"),
-  );
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool _isLoading = false;
   bool _isAuthenticated = false;
 
