@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -37,6 +38,16 @@ class AuthViewModel extends ChangeNotifier {
         notifyListeners();
       },
     );
+  }
+
+  Future<void> login() async {
+    if (!kIsWeb && (Platform.isMacOS || Platform.isIOS)) {
+      return;
+    }
+    if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
+      return;
+    }
+    return signInWithGoogle();
   }
 
   Future<void> signInWithGoogle() async {
