@@ -51,7 +51,9 @@ class AuthViewModel extends ChangeNotifier {
   Future<void> signInWithGoogle() async {
     try {
       _setLoader(true);
-      final googleAccount = await _googleSignIn.signIn();
+      final googleAccount = kIsWeb
+          ? await _googleSignIn.signInSilently()
+          : await _googleSignIn.signIn();
       if (googleAccount == null) {
         _setLoader(false);
         return;
@@ -68,8 +70,6 @@ class AuthViewModel extends ChangeNotifier {
         _setLoader(false);
         return;
       }
-      // final user = await _auth.signInWithEmailAndPassword(
-      //     email: 'testUser@gmail.com', password: 'test1234');
       await _createUser(user);
       _setLoader(false);
     } catch (e) {

@@ -17,7 +17,7 @@ class UserModel {
   factory UserModel.fromUser(User user) {
     return UserModel(
       username: user.displayName ?? '',
-      dpUrl: user.photoURL ?? '',
+      dpUrl: Uri.encodeFull(user.photoURL ?? ''),
       email: user.email ?? '',
       createdDate: DateTime.now(),
     );
