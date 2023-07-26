@@ -33,7 +33,7 @@ class _TakeViewState extends State<TakeView> {
     viewModel = context.read<TakesViewModel>();
     take = widget.take ?? TakeModel.empty();
     textController.text = take.data;
-    viewModel.setTake(take);
+    viewModel.setTake(take, notify: false);
     viewModel.createTake(take);
   }
 

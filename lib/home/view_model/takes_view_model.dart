@@ -8,16 +8,16 @@ class TakesViewModel extends ChangeNotifier {
   final TakeRepo _repo = TakeRepo();
   Timer? _debounce;
   TakeModel? _take;
-  bool _isLargeFabTapped= false;
+  bool _isLargeFabTapped = false;
 
   TakeModel? get take => _take;
   bool get isLargeFabTapped => _isLargeFabTapped;
 
-  void setLargeFabTapped(bool val) => _isLargeFabTapped =val;
+  void setLargeFabTapped(bool val) => _isLargeFabTapped = val;
 
-  void setTake(TakeModel? take) {
+  void setTake(TakeModel? take, {bool notify = true}) {
     _take = take;
-    notifyListeners();
+    if (notify) notifyListeners();
   }
 
   void createTake(TakeModel take) => _repo.saveTake(take);
@@ -48,7 +48,7 @@ class TakesViewModel extends ChangeNotifier {
   Stream<int> get takesCountStream => _repo.takeCount;
 
   void onTapBack(TakeModel? take) {
-    if(take ==null) return;
+    if (take == null) return;
     if (take.data.trim().isNotEmpty) return;
     _repo.deleteTake(take);
   }
