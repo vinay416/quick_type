@@ -26,6 +26,7 @@ dependencies:
   responsive_framework: ^1.1.0
   shared_preferences: ^2.1.2
   tuple: ^2.0.2
+  url_strategy: ^0.2.0
 
 dev_dependencies:
   flutter_test:

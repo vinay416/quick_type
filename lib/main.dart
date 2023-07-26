@@ -12,9 +12,11 @@ import 'package:quick_takes/providers.dart';
 import 'package:quick_takes/theme/view_model/app_theme_view_model.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
   if (!kIsWeb) {
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
       await DesktopWindow.setWindowSize(const Size(1137.0, 761.0));
