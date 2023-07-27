@@ -19,7 +19,7 @@ class HomeEmptyView extends StatelessWidget {
       isSmallAppBar: true,
       actions: const [ProfileButton()],
       body: body,
-      floatingActionButton: context.isLargeDevice ? null : const AddTakeFAB(),
+      floatingActionButton: const AddTakeFAB(),
     );
   }
 
